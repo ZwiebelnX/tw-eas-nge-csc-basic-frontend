@@ -1,10 +1,14 @@
 import Vue from 'vue';
+import service from '@/utils/https';
+import urls from '@/utils/urls';
 import App from './App.vue';
 import router from './router';
 import store from './store';
 import './plugins/element';
 
 Vue.config.productionTip = false;
+Vue.prototype.$https = service;
+Vue.prototype.$urls = urls;
 
 new Vue({
   router,
