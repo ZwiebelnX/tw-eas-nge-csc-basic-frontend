@@ -22,7 +22,7 @@
       </el-form-item>
       <div>
         <el-button type="primary" @click="submitForm">立即注册</el-button>
-        <el-button>取消</el-button>
+        <el-button @click="toHomepage">取消</el-button>
       </div>
     </el-form>
   </div>
@@ -84,6 +84,10 @@ export default class Register extends Vue {
         }
       }
     });
+  }
+
+  toHomepage() {
+    this.$router.push('/');
   }
 }
 
