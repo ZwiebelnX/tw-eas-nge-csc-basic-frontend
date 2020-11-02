@@ -1,8 +1,13 @@
 const urls = {
-  register: () => `/users`
-}
+  register: () => '/users',
+  login: () => '/login',
+  logout: () => '/logout',
+};
 
 export interface Urls {
-  register: Function,
+  register: Function;
+  login: Function;
+  logout: Function;
 }
+
 export default urls;
