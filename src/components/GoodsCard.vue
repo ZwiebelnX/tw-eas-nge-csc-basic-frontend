@@ -5,7 +5,11 @@
       <div class="info-container">
         <div class="goods-title"><span>{{ goodsInfo.name }}</span></div>
         <div class="goods-description"><span>{{ goodsInfo.description }}</span></div>
-        <el-button type="primary" size="small" class="button">添加至购物车</el-button>
+        <div class="info-bottom-container">
+          <el-button type="text" class="store-button">{{goodsInfo.storeName}}</el-button>
+          <el-button type="primary" icon="el-icon-shopping-cart-2" circle size="small"
+                     class="add-to-cart-button"></el-button>
+        </div>
       </div>
     </el-card>
   </div>
@@ -33,7 +37,7 @@ export default class GoodsCard extends Vue {
 }
 
 .info-container{
-  padding-bottom: 10px;
+  padding-bottom: 20px;
 }
 
 .goods-title{
@@ -49,6 +53,12 @@ export default class GoodsCard extends Vue {
 .info-container{
   width: 300px;
   height: 100px;
+}
+
+.store-button{
+  text-decoration: underline;
+  color: lightgray;
+  margin-right: 20px;
 }
 
 </style>
