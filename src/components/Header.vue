@@ -17,6 +17,7 @@
 import {
   Component, Prop, Vue,
 } from 'vue-property-decorator';
+import httpTools from '@/utils/http-tools';
 
 @Component
 export default class Header extends Vue {
@@ -26,9 +27,12 @@ export default class Header extends Vue {
 
   @Prop(Boolean) isShowManagementTab!: boolean
 
-  logout() {
-    this.$https.post(this.$urls.logout());
-    this.$store.commit('logout');
+  async logout() {
+    const response = await this.$https.post(this.$urls.logout());
+    if (httpTools.is2xxResponse(response.status)) {
+      this.$message('登出成功！跳转到主页');
+      this.$store.commit('logout');
+    }
   }
 }
 
