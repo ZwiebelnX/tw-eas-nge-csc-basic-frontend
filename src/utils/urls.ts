@@ -9,7 +9,7 @@ const urls = {
     }
     return url;
   },
-  addGoodsToCart: () => '/carts'
+  addGoodsToCart: () => '/carts',
 };
 
 export interface Urls {

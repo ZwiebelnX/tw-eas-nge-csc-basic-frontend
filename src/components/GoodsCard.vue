@@ -19,7 +19,6 @@
 import {
   Component, Prop, Vue,
 } from 'vue-property-decorator';
-import CartItem from '@/model/cart-item';
 import httpTools from '@/utils/http-tools';
 
 @Component
@@ -29,7 +28,7 @@ export default class GoodsCard extends Vue {
   async addToCart() {
     if (this.$store.state.user !== undefined) {
       const response = await this.$https.post(this.$urls.addGoodsToCart(),
-        new CartItem(this.goodsInfo, 1));
+        { goodsId: this.goodsInfo.id, amount: 1 });
       if (httpTools.is2xxResponse(response.status)) {
         this.$store.commit('addToCart', this.goodsInfo);
         this.$message.success('添加到购物车成功');

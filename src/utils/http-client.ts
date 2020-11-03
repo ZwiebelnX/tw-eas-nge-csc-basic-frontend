@@ -8,33 +8,33 @@ const service = axios.create({
 });
 
 service.interceptors.request.use(
-  (config: any) => {
-    return config;
-  },
+  (config: any) => config,
   (error: any) => {
-    // Do something with request error
     console.error('send request error:', error);
     return error;
   },
 );
 
 service.interceptors.response.use(
-  (response: any) => {
-    return response;
-  },
+  (response: any) => response,
   (error: any) => {
-    console.error('response in error:' + error); // for debug
-    const response = error.response
-    let message = response ? `状态码：${response.status}；错误码：${response.data.code}；错误内容：${response.data.message}` : '';
-    Notification({
-      title: '请求失败',
-      message: message,
-      type: 'error'
-    });
+    const response = { ...error };
     if (response.status === 401) {
-      router.push('/login').then()
+      router.push('/login').then();
+      Notification({
+        title: '登录凭证失效',
+        message: '登录凭证失效，请重新登录',
+        type: 'error',
+      });
+    } else {
+      const message = response ? `状态码：${response.status}；错误码：${response.data.errorCode}；错误内容：${response.data.errorMessage}` : '';
+      Notification({
+        title: '请求失败',
+        message,
+        type: 'error',
+      });
     }
-    return error.response;
+    return response;
   },
 );
 
