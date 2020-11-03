@@ -9,6 +9,7 @@ const urls = {
     }
     return url;
   },
+  addGoodsToCart: () => '/carts'
 };
 
 export interface Urls {
@@ -16,6 +17,7 @@ export interface Urls {
   login: Function;
   logout: Function;
   getGoodsList: Function;
+  addGoodsToCart: Function;
 }
 
 export default urls;
