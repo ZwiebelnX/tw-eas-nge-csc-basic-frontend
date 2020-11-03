@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <el-menu :default-active="activeIndex" router="true" class="header" mode="horizontal">
+    <el-menu :default-active="activeIndex" :router="true" class="header" mode="horizontal">
       <el-menu-item index="/">主页</el-menu-item>
       <el-menu-item index="/cart">购物车</el-menu-item>
       <el-menu-item v-if="isShowManagementTab" index="/management">管理</el-menu-item>

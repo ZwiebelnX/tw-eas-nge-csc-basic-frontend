@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import User from '@/utils/user';
+import User from '@/model/user';
 
 Vue.use(Vuex);
 
