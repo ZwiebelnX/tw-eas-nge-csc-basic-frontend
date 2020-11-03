@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1 class="register-title">用户注册</h1>
-    <el-form ref="form" :rules="rules" status-icon :model="form" label-width="80px">
+    <el-form ref="form" :rules="rules" status-icon :model="form" label-width="80px" class="form">
       <el-form-item label="昵称" prop="nickname">
         <el-input v-model="form.nickname"></el-input>
       </el-form-item>
@@ -98,11 +98,15 @@ export default class Register extends Vue {
   box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
 
   max-width: 600px;
-  padding: 10px;
+  padding: 40px;
   margin: 30px auto 0 auto;
 }
 
 .register-title{
   margin-bottom: 20px;
+}
+
+.form{
+  margin: 20px 80px 10px 80px;
 }
 </style>

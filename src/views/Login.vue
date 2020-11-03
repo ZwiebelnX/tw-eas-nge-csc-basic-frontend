@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1 class="register-title">用户登录</h1>
-    <el-form ref="form" :rules="rules" status-icon :model="form">
+    <el-form ref="form" :rules="rules" status-icon :model="form" class="form">
       <el-form-item prop="name">
         <el-input v-model="form.loginName" placeholder="昵称/电子邮箱"></el-input>
       </el-form-item>
@@ -67,12 +67,16 @@ export default class Login extends Vue {
 .container {
   box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
 
-  max-width: 400px;
-  padding: 10px;
+  max-width: 600px;
+  padding: 40px;
   margin: 30px auto 0 auto;
 }
 
 .register-title{
   margin-bottom: 20px;
+}
+
+.form{
+  margin: 20px 80px 10px 80px;
 }
 </style>
