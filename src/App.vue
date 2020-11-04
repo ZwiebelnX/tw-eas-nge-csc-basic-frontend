@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header :is-show-management-tab="false"></Header>
+    <Header></Header>
     <RouterView></RouterView>
   </div>
 </template>

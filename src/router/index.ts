@@ -6,6 +6,7 @@ import Login from '@/views/Login.vue';
 import Cart from '@/views/Cart.vue';
 import Coupon from '@/views/Coupon.vue';
 import Store from '@/views/Store.vue';
+import Management from '@/views/Management.vue';
 
 Vue.use(VueRouter);
 
@@ -40,6 +41,11 @@ const routes: Array<RouteConfig> = [
     props: true,
     name: 'Store',
     component: Store,
+  },
+  {
+    path: '/management',
+    name: 'Management',
+    component: Management,
   },
 ];
 

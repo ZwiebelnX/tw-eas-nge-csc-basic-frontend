@@ -10,6 +10,9 @@
         <el-menu-item index="/coupon">优惠券</el-menu-item>
         <el-menu-item index="/my-info" disabled>我的信息</el-menu-item>
       </el-submenu>
+      <el-menu-item :disabled="!isShowManagementTable" index="/management">
+        <span :style="{color: 'red'}">管理</span>
+      </el-menu-item>
       <el-menu-item :disabled="this.$store.state.user !== undefined" index="/register">
         注册
       </el-menu-item>
@@ -19,25 +22,25 @@
       <el-menu-item :disabled="this.$store.state.user === undefined" @click="logout">
         登出
       </el-menu-item>
-      <el-menu-item :disabled="!isShowManagementTab" index="/management">管理</el-menu-item>
-
     </el-menu>
   </div>
 </template>
 
 <script lang="ts">
 import {
-  Component, Prop, Vue,
+  Component, Vue,
 } from 'vue-property-decorator';
 import httpTools from '@/utils/http-tools';
 
 @Component
 export default class Header extends Vue {
+  get isShowManagementTable() {
+    return this.$store.state.user !== undefined && this.$store.state.user.isAdmin;
+  }
+
   get activeIndex() {
     return this.$route.path;
   }
-
-  @Prop(Boolean) isShowManagementTab!: boolean
 
   async logout() {
     const response = await this.$https.post(this.$urls.logout());
@@ -52,7 +55,7 @@ export default class Header extends Vue {
 </script>
 
 <style scoped>
-  .header{
-    height: 5%;
-  }
+.header {
+  height: 5%;
+}
 </style>
