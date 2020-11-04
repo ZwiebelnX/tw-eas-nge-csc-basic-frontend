@@ -5,6 +5,7 @@
       <GoodsCard :key="goods.id" v-for="goods in goodsList" :goods-info="goods" />
     </div>
     <GuideBox v-if="storeId === '2'" />
+    <WinningBox v-if="storeId === '3'" />
   </div>
 </template>
 
@@ -14,10 +15,11 @@ import {
 } from 'vue-property-decorator';
 import httpTools from '@/utils/http-tools';
 import GuideBox from '@/components/requirements/GuideBox.vue';
+import WinningBox from '@/components/requirements/WinningBox.vue';
 import GoodsCard from '../components/GoodsCard.vue';
 
 @Component({
-  components: { GuideBox, GoodsCard },
+  components: { WinningBox, GuideBox, GoodsCard },
 })
 export default class Store extends Vue {
   goodsList: Goods[] = []
