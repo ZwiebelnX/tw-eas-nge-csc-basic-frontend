@@ -30,7 +30,7 @@ export default class GoodsCard extends Vue {
       const response = await this.$https.post(this.$urls.addGoodsToCart(),
         { goodsId: this.goodsInfo.id, amount: 1 });
       if (httpTools.is2xxResponse(response.status)) {
-        this.$store.commit('addToCart', this.goodsInfo);
+        this.$store.commit('addToCart', { goodsInfo: this.goodsInfo, changeAmount: 1 });
         this.$message.success('添加到购物车成功');
       }
     } else {
