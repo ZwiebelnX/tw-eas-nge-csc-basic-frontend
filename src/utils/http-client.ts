@@ -27,7 +27,7 @@ service.interceptors.response.use(
         type: 'error',
       });
     } else {
-      const message = response ? `状态码：${response.status}；错误码：${response.data.errorCode}；错误内容：${response.data.errorMessage}` : '';
+      const message = response.data ? `状态码：${response.status}；错误码：${response.data.errorCode}；错误内容：${response.data.errorMessage}` : '';
       Notification({
         title: '请求失败',
         message,
