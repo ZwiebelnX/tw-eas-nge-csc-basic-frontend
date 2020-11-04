@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <h1 class="register-title">用户登录</h1>
-    <el-form ref="form" :rules="rules" status-icon :model="form" class="form">
+    <el-form ref="form" :rules="rules" status-icon :model="form" class="form"
+             @keyup.enter.native="login">
       <el-form-item prop="name">
         <el-input v-model="form.loginName" placeholder="昵称/电子邮箱"></el-input>
       </el-form-item>
