@@ -34,6 +34,7 @@ import {
   Component, Vue,
 } from 'vue-property-decorator';
 import { Form } from 'element-ui';
+import ModifyStatistic from '@/model/modify-statistic';
 
 @Component
 export default class Register extends Vue {
@@ -79,8 +80,9 @@ export default class Register extends Vue {
       if (valid) {
         const response = await this.$https.post(this.$urls.register(), this.form);
         if (response.status === 201) {
-          this.$message.success('创建成功');
-          this.$router.go(0);
+          this.$message.success('注册成功');
+          await this.$https.patch(this.$urls.modifyStatisticInfo(), new ModifyStatistic('B公司优惠券领取人数', 1));
+          this.$router.go('/');
         }
       }
     });

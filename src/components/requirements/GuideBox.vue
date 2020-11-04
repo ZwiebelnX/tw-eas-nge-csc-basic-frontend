@@ -30,6 +30,7 @@ import {
   Component, Vue,
 } from 'vue-property-decorator';
 import httpTools from '@/utils/http-tools';
+import ModifyStatistic from '@/model/modify-statistic';
 
 @Component
 export default class GuideBox extends Vue {
@@ -66,6 +67,7 @@ export default class GuideBox extends Vue {
       const response = await this.$https.post(this.$urls.addCouponToUser(), { id: '1' });
       if (httpTools.is2xxResponse(response.status)) {
         this.$message.success('优惠券已发放，请到优惠券列表查看。');
+        await this.$https.patch(this.$urls.modifyStatisticInfo(), new ModifyStatistic('B公司优惠券领取人数', 1));
       }
     }
   }

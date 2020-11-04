@@ -9,6 +9,7 @@ import {
   Component, Vue,
 } from 'vue-property-decorator';
 import httpTools from '@/utils/http-tools';
+import ModifyStatistic from '@/model/modify-statistic';
 
 @Component
 export default class WinningBox extends Vue {
@@ -37,6 +38,7 @@ export default class WinningBox extends Vue {
       await this.$alert('恭喜您中奖了！优惠券已发放，请到优惠券列表查看', '恭喜中奖', {
         confirmButtonText: '确定',
       });
+      await this.$https.patch(this.$urls.modifyStatisticInfo(), new ModifyStatistic('C公司优惠券领取人数', 1));
     }
   }
 }

@@ -35,6 +35,7 @@ const urls = {
   },
   addCouponToUser: () => 'users/coupons',
   getStatisticInfo: () => '/statistics',
+  modifyStatisticInfo: () => '/statistics',
 };
 
 export interface Urls {
@@ -50,6 +51,7 @@ export interface Urls {
   getStoreGoods: Function;
   addCouponToUser: Function;
   getStatisticInfo: Function;
+  modifyStatisticInfo: Function;
 }
 
 export default urls;
