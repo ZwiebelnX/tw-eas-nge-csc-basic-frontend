@@ -40,6 +40,14 @@ export default class Login extends Vue {
     ],
   };
 
+  mounted() {
+    if (sessionStorage.getItem('userInfo') !== null) {
+      this.$store.commit('login', JSON.parse(sessionStorage.getItem('userInfo') as string));
+    } else {
+      this.$store.commit('logout');
+    }
+  }
+
   login() {
     const formRef = this.$refs.form as Form;
     formRef.validate(async (valid: boolean) => {

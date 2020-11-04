@@ -7,13 +7,18 @@
 
 <script>
 import Header from '@/components/Header.vue';
+import { Component, Vue } from 'vue-property-decorator';
 
-export default {
-  name: 'app',
-  components: {
-    Header,
-  },
-};
+@Component({
+  components: { Header },
+})
+export default class Register extends Vue {
+  mounted() {
+    if (this.$store.state.user === undefined && sessionStorage.getItem('user') !== null) {
+      this.$store.commit('login', JSON.parse(sessionStorage.getItem('user')));
+    }
+  }
+}
 </script>
 
 <style>

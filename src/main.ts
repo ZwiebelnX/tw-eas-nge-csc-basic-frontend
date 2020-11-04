@@ -3,7 +3,7 @@ import service from '@/utils/http-client';
 import urls from '@/utils/urls';
 import App from './App.vue';
 import router from './router';
-import store from './store';
+import store from './store/index';
 import './plugins/element';
 
 Vue.config.productionTip = false;

@@ -18,7 +18,7 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   (response: any) => response,
   (error: any) => {
-    const response = { ...error };
+    const response = { ...error.response };
     if (response.status === 401) {
       router.push('/login').then();
       Notification({

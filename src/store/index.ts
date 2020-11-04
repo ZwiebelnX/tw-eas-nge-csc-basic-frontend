@@ -13,20 +13,32 @@ export default new Vuex.Store({
   mutations: {
     login(state: any, user: User) {
       state.user = user;
+      sessionStorage.setItem('user', JSON.stringify(user));
     },
     logout(state: any) {
       state.user = undefined;
+      sessionStorage.removeItem('user');
     },
-    addToCart(state: any, goodsInfo: Goods) {
-      if (state.cart.has(goodsInfo.id)) {
-        (state.cart.get(goodsInfo.id) as CartItem).amount += 1;
+    addToCart(state: any, changeInfo: {goodsInfo: Goods; changeAmount: number}) {
+      if (state.cart.has(changeInfo.goodsInfo.id)) {
+        (state.cart.get(changeInfo.goodsInfo.id) as CartItem).amount += changeInfo.changeAmount;
       } else {
-        state.cart.set(goodsInfo.id, new CartItem(goodsInfo, 1));
+        state.cart.set(changeInfo.goodsInfo.id,
+          new CartItem(changeInfo.goodsInfo, changeInfo.changeAmount));
       }
     },
-    deleteCartItem(state: any, deleteInfo: {id: string; amountToDelete: number}) {
-      const cartItem = state.cart.get(deleteInfo.id) as CartItem;
-      cartItem.amount -= deleteInfo.amountToDelete;
+    deleteFromCart(state: any, changeInfo: {goodsInfo: Goods; changeAmount: number}) {
+      const cartItem = state.cart.get(changeInfo.goodsInfo.id) as CartItem;
+      cartItem.amount -= changeInfo.changeAmount;
+      if (cartItem.amount <= 0) {
+        state.cart.delete(changeInfo.goodsInfo.id);
+      }
+    },
+    refreshCart(state: any, cartItemList: CartItem[]) {
+      state.cart.clear();
+      cartItemList.forEach((value) => {
+        state.cart.set(value.goodsInfo.id, new CartItem(value.goodsInfo, value.amount));
+      });
     },
   },
   actions: {

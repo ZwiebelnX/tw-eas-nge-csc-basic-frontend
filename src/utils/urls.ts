@@ -10,6 +10,14 @@ const urls = {
     return url;
   },
   addGoodsToCart: () => '/carts',
+  deleteGoodsFromCart: () => '/carts',
+  getCartList: (pageNum: number, pageSize?: number) => {
+    let url = `/carts?pageNum=${pageNum}`;
+    if (pageSize) {
+      url += `&pageSize=${pageSize}`;
+    }
+    return url;
+  },
 };
 
 export interface Urls {
@@ -18,6 +26,8 @@ export interface Urls {
   logout: Function;
   getGoodsList: Function;
   addGoodsToCart: Function;
+  getCartList: Function;
+  deleteGoodsFromCart: Function;
 }
 
 export default urls;
