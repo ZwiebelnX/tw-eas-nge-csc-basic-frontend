@@ -5,6 +5,7 @@ import Register from '@/views/Register.vue';
 import Login from '@/views/Login.vue';
 import Cart from '@/views/Cart.vue';
 import Coupon from '@/views/Coupon.vue';
+import Store from '@/views/Store.vue';
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,12 @@ const routes: Array<RouteConfig> = [
     path: '/coupon',
     name: 'Coupon',
     component: Coupon,
+  },
+  {
+    path: '/store/:storeId',
+    props: true,
+    name: 'Store',
+    component: Store,
   },
 ];
 

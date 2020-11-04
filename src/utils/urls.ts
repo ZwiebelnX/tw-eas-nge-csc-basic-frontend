@@ -25,6 +25,15 @@ const urls = {
     }
     return url;
   },
+  getStoreInfo: (storeId: number) => `/stores/${storeId}`,
+  getStoreGoods: (storeId: number, pageNum: number, pageSize?: number) => {
+    let url = `/stores/${storeId}/goods?pageNum=${pageNum}`;
+    if (pageSize) {
+      url += `&pageSize=${pageSize}`;
+    }
+    return url;
+  },
+  addCouponToUser: () => 'users/coupons',
 };
 
 export interface Urls {
@@ -36,6 +45,9 @@ export interface Urls {
   getCartList: Function;
   deleteGoodsFromCart: Function;
   getCouponList: Function;
+  getStoreInfo: Function;
+  getStoreGoods: Function;
+  addCouponToUser: Function;
 }
 
 export default urls;
