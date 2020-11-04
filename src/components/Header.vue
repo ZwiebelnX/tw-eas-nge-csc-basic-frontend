@@ -5,9 +5,11 @@
       <el-menu-item :disabled="this.$store.state.user === undefined" index="/cart">
         购物车
       </el-menu-item>
-      <el-menu-item :disabled="this.$store.state.user === undefined" index="/mine">
-        我的
-      </el-menu-item>
+      <el-submenu :disabled="this.$store.state.user === undefined" index="/mine">
+        <template slot="title">我的</template>
+        <el-menu-item index="/coupon">优惠券</el-menu-item>
+        <el-menu-item index="/my-info" disabled>我的信息</el-menu-item>
+      </el-submenu>
       <el-menu-item :disabled="this.$store.state.user !== undefined" index="/register">
         注册
       </el-menu-item>

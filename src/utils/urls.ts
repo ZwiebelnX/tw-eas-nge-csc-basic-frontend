@@ -18,6 +18,13 @@ const urls = {
     }
     return url;
   },
+  getCouponList: (pageNum: number, pageSize?: number) => {
+    let url = `/coupons?pageNum=${pageNum}`;
+    if (pageSize) {
+      url += `&pageSize=${pageSize}`;
+    }
+    return url;
+  },
 };
 
 export interface Urls {
@@ -28,6 +35,7 @@ export interface Urls {
   addGoodsToCart: Function;
   getCartList: Function;
   deleteGoodsFromCart: Function;
+  getCouponList: Function;
 }
 
 export default urls;

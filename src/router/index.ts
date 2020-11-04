@@ -4,6 +4,7 @@ import Home from '@/views/Home.vue';
 import Register from '@/views/Register.vue';
 import Login from '@/views/Login.vue';
 import Cart from '@/views/Cart.vue';
+import Coupon from '@/views/Coupon.vue';
 
 Vue.use(VueRouter);
 
@@ -27,6 +28,11 @@ const routes: Array<RouteConfig> = [
     path: '/cart',
     name: 'Cart',
     component: Cart,
+  },
+  {
+    path: '/coupon',
+    name: 'Coupon',
+    component: Coupon,
   },
 ];
 
