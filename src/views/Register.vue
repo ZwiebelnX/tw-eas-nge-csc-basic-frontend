@@ -81,8 +81,8 @@ export default class Register extends Vue {
         const response = await this.$https.post(this.$urls.register(), this.form);
         if (response.status === 201) {
           this.$message.success('注册成功');
-          await this.$https.patch(this.$urls.modifyStatisticInfo(), new ModifyStatistic('B公司优惠券领取人数', 1));
-          this.$router.go('/');
+          await this.$https.patch(this.$urls.modifyStatisticInfo(), new ModifyStatistic('A公司优惠券领取人数', '1'));
+          await this.$router.push('/');
         }
       }
     });

@@ -45,7 +45,7 @@ export default class Cart extends Vue {
     this.cart = Array.from(this.$store.state.cart.values());
   }
 
-  async handleAmountChange(currentValue, oldValue, goodsInfo: Goods) {
+  async handleAmountChange(currentValue: number, oldValue: number, goodsInfo: Goods) {
     let changeAmount = currentValue - oldValue;
     if (changeAmount > 0) {
       const response = await this.$https

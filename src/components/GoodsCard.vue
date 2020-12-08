@@ -6,7 +6,9 @@
         <div class="goods-title"><span>{{ goodsInfo.name }}</span></div>
         <div class="goods-description"><span>{{ goodsInfo.description }}</span></div>
         <div class="info-bottom-container">
-          <el-button type="text" class="store-button">{{goodsInfo.storeName}}</el-button>
+          <el-button type="text" class="store-button" @click="gotoStore">
+            {{goodsInfo.storeName}}
+          </el-button>
           <el-button type="primary" icon="el-icon-shopping-cart-2" circle size="small"
                      class="add-to-cart-button" @click="addToCart"></el-button>
         </div>
@@ -37,6 +39,10 @@ export default class GoodsCard extends Vue {
       this.$message.warning('请先登录');
       this.$router.push('/login').then();
     }
+  }
+
+  gotoStore() {
+    this.$router.push(`/store/${this.goodsInfo.storeId}`);
   }
 }
 </script>
